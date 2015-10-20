@@ -9,7 +9,6 @@ before_install:
   # Parallel download
   - sudo apt-get update -qq
   - sudo apt-get install aria2 curl -y
-  - sudo ./update.sh > /dev/null &
 
   # Retrieves and extracts the DB2 binaries
   - DOWNLOAD_LINK=$(phantomjs --ssl-protocol=tlsv1 download.js | tail -1)
@@ -19,7 +18,6 @@ before_install:
   - tar zxvf ${DOWNLOAD_FILE}
 
   # INSTALL
-
   # Install the required libraries
   - sudo apt-get install libaio1 lib32stdc++6 -y
   - sudo apt-get install -qq libpam-ldap:i386

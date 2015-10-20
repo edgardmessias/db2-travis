@@ -74,7 +74,7 @@ LIC_AGREEMENT             = ACCEPT         ** ACCEPT or DECLINE
 ** 
 ** Note: The install type is not related to the language selection.
 ** ----------------------------------------------------------------------------
-INSTALL_TYPE              = COMPACT         ** TYPICAL, COMPACT, CUSTOM
+INSTALL_TYPE              = CUSTOM         ** TYPICAL, COMPACT, CUSTOM
 
 ** The following components are part of all TYPICAL installations. If you
 ** perform a typical installation, all of these components will be installed on
