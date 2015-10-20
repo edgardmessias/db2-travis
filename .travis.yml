@@ -35,12 +35,19 @@ before_install:
   - sudo su - db2inst1 -c "db2 create db travis ; db2 connect to travis ; db2 grant dbadm on database to user $USER"
 
   - export DB2DIR=/home/db2inst1/sqllib
+
+  # Install pdo_ibm
   - git clone https://git.php.net/repository/pecl/database/pdo_ibm.git
   - (cd pdo_ibm/; phpize && ./configure --with-pdo-ibm=${DB2DIR} && make && sudo make install)
   - echo "extension=pdo_ibm.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+  # Install ibm_db2
+  - git clone https://git.php.net/repository/pecl/database/ibm_db2.git
+  - (cd ibm_db2/; phpize && ./configure --with-IBM_DB2=${DB2DIR} && make && sudo make install)
+  - echo "extension=ibm_db2.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
   - php -m | grep -i ibm
 
 script:
   # Execute your scripts
-  # - db2 "call db2unit.run_suite('MY_SUITE')"
   - echo Hello
