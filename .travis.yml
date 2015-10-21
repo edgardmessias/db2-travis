@@ -11,9 +11,9 @@ before_install:
   - sudo apt-get install aria2 curl -y
 
   # Retrieves and extracts the DB2 binaries
-  - DOWNLOAD_LINK=$(phantomjs --ssl-protocol=tlsv1 download.js | tail -1)
+  - travis_retry export DOWNLOAD_LINK=$(phantomjs --ssl-protocol=tlsv1 download.js | tail -1 | grep http)
   - cd /tmp
-  - aria2c -x 16 ${DOWNLOAD_LINK}
+  - travis_retry aria2c -x 16 ${DOWNLOAD_LINK}
   - DOWNLOAD_FILE=$(ls *.tar.gz)
   - tar zxvf ${DOWNLOAD_FILE}
 
